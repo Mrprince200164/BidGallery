@@ -1,0 +1,445 @@
+/* ===== Hero Section Styling ===== */
+.hero-section {
+    padding: 100px 50px 50px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h4 {
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #000;
+    line-height: 1.3;
+}
+
+.hero-text span {
+    color: #fdc80b;
+}
+
+.explore-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 28px;
+    background-color: #007759;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+    background-color: #005f49;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-image {
+        margin-bottom: 40px;
+    }
+}
+
+
+.trending-section {
+    padding: 60px 50px;
+    background-color: #f8f9fa;
+}
+
+.trending-heading {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.trending-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.custom-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+}
+
+.custom-card-image {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.custom-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.custom-card-body h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.custom-card-body p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.date-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.custom-btn {
+    margin-top: 25px;
+    display: block;
+    width: 100%;
+    background-color: #007759;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #005e47;
+}
+
+.highlight-bid {
+    color: red;
+    font-weight: bold;
+}
+
+/* Base Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background-color: #ffffff;
+	color: #333;
+}
+
+/* Container Styling */
+/* Contact Section Container */
+.containerContact {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Contact Section Layout */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+/* Columns */
+.contact-section .col {
+  flex: 1 1 45%;
+}
+
+.contact-section .left {
+  margin-top: -40px; /* adjust value as needed */
+}
+
+/* Left Side */  
+.left .contactTitle h2 {
+  color: #007759;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.left .contactTitle h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: #007759;
+  margin-top: 8px;
+}
+
+.left .contactTitle p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+/* Contact Info Groups */
+.contactInfo .iconGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contactInfo .iconGroup .icon {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #007759;
+  color: #007759;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 18px;
+}
+
+.contactInfo .iconGroup .details span:first-child {
+  font-weight: 600;
+  display: block;
+  color: #333;
+}
+
+.contactInfo .iconGroup .details span:last-child {
+  color: #666;
+  font-size: 15px;
+}
+
+/* Social Media Icons */
+.socialMedia {
+  margin-top: 30px;
+}
+
+.socialMedia a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #007759;
+  color: white;
+  margin-right: 10px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 40px;
+  transition: 0.3s;
+}
+
+.socialMedia a:hover {
+  background-color: #005e48;
+}
+
+/* Right Side - Form */
+.messageForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.inputGroup {
+  position: relative;
+  flex: 1 1 100%;
+}
+
+.inputGroup.halfWidth {
+  flex: 1 1 48%;
+}
+
+.inputGroup.fullWidth {
+  flex: 1 1 100%;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 100%;
+  padding: 10px 5px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  resize: vertical;
+}
+
+.inputGroup textarea {
+  min-height: 120px;
+}
+
+/* Floating Labels */
+.inputGroup label {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.inputGroup input:focus ~ label,
+.inputGroup input:valid ~ label,
+.inputGroup textarea:focus ~ label,
+.inputGroup textarea:valid ~ label {
+  top: -15px;
+  font-size: 14px;
+  color: #007759;
+}
+
+/* Submit Button */
+.messageForm button {
+  padding: 12px 30px;
+  background-color: #007759;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+}
+
+.messageForm button:hover {
+  background-color: #005e48;
+}
+
+/* Add bid Popup Container */
+.custom-popup {
+  display: none;
+  position: fixed;
+  top: 15%;
+  left: 35%;
+  width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.custom-popup.active {
+  display: block;
+}
+
+/* Coin button group */
+.coin-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Coin buttons */
+.coin-btn {
+  flex: 1 1 30%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.coin-btn:hover {
+  background-color: #fdc80b;
+}
+
+.coin-btn.active {
+  background-color: #fdc80b;
+  color: #000;
+}
+
+.buy-coins-btn {
+  background-color: #007759;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.submit-bid-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007759;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.submit-bid-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}

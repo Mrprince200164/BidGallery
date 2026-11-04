@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Account</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="style/notification.css">
+        <style>
+            body {
+                background-color: #ffffff;
+            }
+
+            .account-settings-links .list-group-item {
+                background-color: #007759;
+                color: white;
+                border: none;
+            }
+
+            .account-settings-links .list-group-item.active {
+                background-color: white;
+                color: #007759;
+                font-weight: bold;
+                border-left: 4px solid #007759;
+            }
+
+            .card {
+                border: 1px solid #007759;
+            }
+
+            .btn-save {
+                background-color: #007759;
+                color: white;
+                border-radius: 25px;
+                padding: 8px 20px;
+                border: none;
+            }
+
+            .btn-cancel {
+                background-color: white;
+                color: #007759;
+                border-radius: 25px;
+                padding: 8px 20px;
+                border: 1px solid #007759;
+            }
+
+            .coin-box input {
+                font-weight: bold;
+                pointer-events: none;
+                background-color: #f2f2f2;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+
+            .btn-buy {
+                background-color: #007759;
+                color: white;
+                border-radius: 25px;
+                padding: 5px 15px;
+                border: none;
+
+                .card-img-top {
+                    height: 200px;
+                    object-fit: cover;
+                }
+            }
+
+            .custom-card {
+                background-color: #fff;
+                border-radius: 16px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: transform 0.3s ease;
+                width: 350px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .custom-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .custom-card .card-img-top {
+                height: 200px;
+                object-fit: cover;
+            }
+
+        </style>
+    </head>
+
+    <body onload="loadFeatures(); checkSignIn(); hideAdminFeatures();">
+        <div class="container light-style flex-grow-1 container-p-y mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="font-weight-bold mb-0">Account Settings</h4>
+                <div class="d-flex align-items-center coin-box">
+                    <input type="text" class="coin-balance" value="Coins: 000" readonly  />
+                    <button class="btn-buy ml-2" onclick="window.location.href = 'CoinPackages.html';">Buy Coins</button>
+                </div>
+            </div>
+
+            <div class="card overflow-hidden">
+                <div class="row no-gutters row-bordered row-border-light">
+                    <div class="col-md-3 pt-0">
+                        <div class="list-group list-group-flush account-settings-links">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-artist">Artist</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-myarts">Add Arts</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-events">Betting Events</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-users">Edit Users</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-mycollection"> My collection</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+
+                            <!-- General Tab -->
+                            <div class="tab-pane fade active show" id="account-general">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control mb-1" placeholder="John" id="first_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Doe" id="last_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control"  id="email" placeholder="john@example.com" readonly >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" placeholder="********">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Mobile</label>
+                                        <div class="d-flex align-items-center">
+                                            <input type="text" id="mobile" class="form-control w-50" placeholder="+94 77 123 4567">
+                                            <div class="form-check ml-3 mt-1">
+                                                <input class="form-check-input" type="checkbox" id="isArtist">
+                                                <label class="form-check-label ml-1" for="isArtist">I'm an artist</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" id="address" class="form-control" placeholder="Enter your address">
+                                    </div>
+
+                                    <div class="text-right mt-4">
+                                        <button type="button" class="btn btn-save" onclick="updateUser();">Save Changes</button>
+                                        <button type="button" class="btn btn-cancel ml-2" onclick="window.location.href = 'index.html';">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Artist Tab -->
+                            <div class="tab-pane fade" id="account-artist">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Bio</label>
+                                        <textarea id="bio" class="form-control mb-1" rows="3" placeholder="Enter artist bio"></textarea>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label">Birth Date</label>
+                                            <input id="birthDate"  type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label">Death Date</label>
+                                            <input id="deathDate" type="date" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Nationality</label>
+                                        <input id="nationality" type="text" class="form-control" placeholder="Enter nationality">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Style</label>
+                                        <input id="style" type="text" class="form-control" placeholder="Enter artistic style (e.g. Impressionism)">
+                                    </div>
+
+                                    <div class="text-right mt-4">
+                                        <button type="button" class="btn btn-save" onclick="updateArtist();">Save Profile</button>
+                                        <button type="button" class="btn btn-cancel ml-2" onclick="goToGeneralTab()">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Add Artwork Tab -->
+                            <div class="tab-pane fade" id="account-myarts">
+                                <div class="card-body">
+                                    <h5 class="mb-3">Add New Artwork</h5>
+                                    <div id="message" class="error-text"></div>
+                                    <!-- Title -->
+                                    <div class="form-group">
+                                        <label class="form-label">Title</label>
+                                        <input type="text" class="form-control" placeholder="Enter artwork title" name="title" id="title">
+                                    </div>
+
+                                    <!-- Creation Year (Date Picker) -->
+                                    <div class="form-group">
+                                        <label class="form-label">Creation Year</label>
+                                        <input type="date" class="form-control" name="creation_year" id="creation-year">
+                                    </div>
+
+                                    <!-- Dimensions -->
+                                    <div class="form-group">
+                                        <label class="form-label">Dimensions</label>
+                                        <input type="text" class="form-control" placeholder="e.g. 24x36 inches" name="dimensions" id="diamension">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="form-group">
+                                        <label class="form-label">Description</label>
+                                        <textarea class="form-control" rows="3" placeholder="Describe the artwork..." name="description" id="description"></textarea>
+                                    </div>
+
+                                    <!-- Medium -->
+                                    <div class="form-group">
+                                        <label class="form-label">Medium</label>
+                                        <select class="form-control" id="medium-select">
+                                            <option value="0">Select medium</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Estimated Coin Value -->
+                                    <div class="form-group">
+                                        <label class="form-label">Estimated Coin Value</label>
+                                        <input type="number" class="form-control" placeholder="e.g. 500" name="estimated_coin_value" min="0" id="coin-value">
+                                    </div>
+
+
+                                    <!-- Image Upload -->
+                                    <div class="form-group">
+                                        <label class="form-label">Artwork Image</label>
+                                        <input type="file" class="form-control-file" accept="image/*" name="artwork_image" id="artImage">
+                                        <img id="imagePreview" src="#" alt="Preview" style="max-width: 200px; margin-top: 10px; display: none;" />
+                                    </div>
+                                    <!--onchange="previewImage(this)"-->
+
+                                    <!-- Hidden or Readonly Fields for Logged-in User -->
+                                    <input type="hidden" name="current_owner_user_id" value="" id="Artist">
+
+
+                                    <!-- Or display it as readonly -->
+
+                                    <input type="hidden"  name="Artists_artist_id"  value=""  id="currentOwner">
+
+
+
+
+                                    <!-- Submit Buttons -->
+                                    <div class="text-right mt-4">
+
+                                        <button type="button" class="btn btn-save" onclick="ArtworkListing()">Save Artwork</button>
+                                        <button type="button" class="btn btn-cancel ml-2" onclick="goToGeneralTab()">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- My Collection Tab -->
+                            <div class="tab-pane fade" id="account-mycollection">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <h5 class="mb-0">My Collection</h5>
+
+                                        <!-- Artwork Status Filter -->
+                                        <div class="form-group mb-0" style="width: 250px;">
+                                            <select class="form-control" id="artwork-status">
+                                                <option  value="0">Select status</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Artwork Cards Row -->
+                                    <div class="row">
+                                        <!-- Card 1 -->
+                                        <div class="col-md-4 d-flex justify-content-center">
+                                            <div class="custom-card mb-4">
+                                                <img src="Resources/The_Starry_Night_by_Vincent_Van_Gogh.jpg" class="card-img-top" alt="Artwork 1">
+                                                <div class="card-body">
+                                                    <h6 class="card-title mb-1">Sunset Glory</h6>
+                                                    <p class="text-muted mb-1">Oil | 24x36 | 2023</p>
+                                                    <p><strong>Status:</strong> Available</p>
+                                                    <p><strong>Value:</strong> 500 coins</p>
+                                                    <p class="card-text">A calming depiction of a coastal sunset blending vibrant colors into a serene horizon.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 2 -->
+                                        <div class="col-md-4 d-flex justify-content-center">
+                                            <div class="custom-card mb-4">
+                                                <img src="Resources/The_Scream_by_Edvard_Munch.jpg" class="card-img-top" alt="Artwork 2">
+                                                <div class="card-body">
+                                                    <h6 class="card-title mb-1">Mountain Mist</h6>
+                                                    <p class="text-muted mb-1">Acrylic | 18x24 | 2024</p>
+                                                    <p><strong>Status:</strong> Sold</p>
+                                                    <p><strong>Value:</strong> 350 coins</p>
+                                                    <p class="card-text">A scenic morning view of mist-covered mountains with rich textured brush strokes.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3 -->
+                                        <div class="col-md-4 d-flex justify-content-center">
+                                            <div class="custom-card mb-4">
+                                                <img src="Resources/Mona_Lisa_by_Leonardo_Da_Vinci.jpg" class="card-img-top" alt="Artwork 3">
+                                                <div class="card-body">
+                                                    <h6 class="card-title mb-1">Digital Dream</h6>
+                                                    <p class="text-muted mb-1">Digital | 1920x1080px | 2025</p>
+                                                    <p><strong>Status:</strong> Under Review</p>
+                                                    <p><strong>Value:</strong> 600 coins</p>
+                                                    <p class="card-text">A futuristic concept piece exploring neon palettes and abstract digital realms.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="account-events">
+                                <div class="card-body">
+                                    <!-- Artwork Dropdown -->
+                                    <div class="form-group">
+                                        <label class="form-label">Select Artwork</label>
+                                        <select class="form-control" id="artwork-select">
+                                            <option value="0" disabled selected>Choose Artwork</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Artwork Description -->
+                                    <div class="form-group">
+                                        <label class="form-label">Artwork Description</label>
+                                        <textarea class="form-control" type="text"  id="artworkDescription"  readonly></textarea>
+                                        <!--                                        
+                                                                            </div>
+                                        
+                                        <!-- Event Name -->
+                                        <div class="form-group">
+                                            <label class="form-label">Event Name</label>
+                                            <input type="text" class="form-control" id="eventName" placeholder="Enter event name">
+                                        </div>
+
+                                        <!-- Start Time -->
+                                        <div class="form-group">
+                                            <label class="form-label">Start Time</label>
+                                            <input type="datetime-local" class="form-control" id="startTime">
+                                        </div>
+
+                                        <!-- End Time -->
+                                        <div class="form-group">
+                                            <label class="form-label">End Time</label>
+                                            <input type="datetime-local" class="form-control" id="endTime">
+                                        </div>
+
+                                        <!-- Starting Bid Coins -->
+                                        <div class="form-group">
+                                            <label class="form-label">Starting Bid (Coins)</label>
+                                            <input type="number" class="form-control" id="startingBidCoins" placeholder="Auto-loaded" min="0">
+                                        </div>
+
+                                        <!-- Highest Bidder User ID (Artist ID) -->
+                                        <div class="form-group">
+                                            <label class="form-label">Highest Bidder User ID (Artist)</label>
+                                            <input type="text" class="form-control" id="highestBidderUserId" readonly>
+                                        </div>
+
+                                        <!-- Winning Bid Coins -->
+                                        <div class="form-group">
+                                            <label class="form-label">Winning Bid Coins</label>
+                                            <input type="number" class="form-control" id="winningBidCoins" readonly value="0" min="0">
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="text-right mt-4">
+                                            <button type="button" class="btn btn-save" onclick=" saveEvents()">Save Event</button>
+                                            <button type="button" class="btn btn-cancel ml-2" href="#account-general" onclick="goToGeneralTab()">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="account-users">
+                                <div class="card-body">
+                                    <!-- User Dropdown -->
+                                    <div class="form-group">
+                                        <label class="form-label">Select User</label>
+                                        <select class="form-control" id="artwork-select">
+                                            <option value="0" disabled selected>Choose User</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- password -->
+                                    <div class="form-group">
+                                        <label class="form-label">Password</label>
+                                        <input type="text" class="form-control" type="text"  id="password"  readonly>
+                                        <!--                                        
+                             
+                                        
+                                        <!-- First Name -->
+                                        <div class="form-group">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="FirstName" placeholder="Enter First name">
+                                        </div>
+
+                                        <!-- Last Name -->
+                                        <div class="form-group">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="LastName" placeholder="Enter last name">
+                                        </div>
+
+                                        <!--Mobile-->
+                                        <div class="form-group">
+                                            <label class="form-label">Mobile</label>
+                                            <input type="text" class="form-control" id="Mobile" placeholder="Enter Mobile">
+                                        </div>
+
+                                        <!-- Register Date -->
+                                        <div class="form-group">
+                                            <label class="form-label">Register Date</label>
+                                            <input type="datetime-local" class="form-control" id="RegDate">
+                                        </div>
+
+
+                                        <!-- Coin balance -->
+                                        <div class="form-group">
+                                            <label class="form-label">Coin Balance</label>
+                                            <input type="number" class="form-control" id="CoinBlanace" placeholder="Auto-loaded" min="0">
+                                        </div>
+
+                                        <!-- User Admin -->
+                                        <div class="form-group">
+                                            <label class="form-label">Be a Admin</label>
+                                            <select class="form-control" id="admin-select">
+                                                <option value="0" >No</option>
+                                                <option value="1" >Yes</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- User Artist -->
+                                        <div class="form-group">
+                                            <label class="form-label">Be a Artist</label>
+                                            <select class="form-control" id="artist-select">
+                                                <option value="0" >No</option>
+                                                <option value="1" >Yes</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- User Address -->
+                                        <div class="form-group">
+                                            <label class="form-label">Address</label>
+                                            <input type="text" id="Useraddress" class="form-control" placeholder="Enter your address">
+                                        </div>
+
+                                        <!-- User Status -->
+                                        <div class="form-group">
+                                            <label class="form-label">Status </label>
+                                            <select class="form-control" id="status-select">
+                                                <option value="0" >No</option>
+                                                <option value="1" >Yes</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="text-right mt-4">
+                                            <button type="button" class="btn btn-save" onclick=" saveUser()">Save Event</button>
+                                            <button type="button" class="btn btn-cancel ml-2" href="#account-general" onclick="goToGeneralTab()">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script src="script/load-profile-data.js"></script>
+<script src="script/index.js"></script>
+<script src="script/myaccount.js"></script>
+<script src="script/loadCoinBalance.js"></script>
+<script src="script/notification.js"></script>
+<script src="script/AddProduct.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

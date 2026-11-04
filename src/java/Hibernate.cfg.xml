@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bidgallery?useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Mrprince@2979</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property> 
+        <mapping class="entity.User" />
+        <mapping class="entity.Bids" />
+        <mapping class="entity.UserStatus"/>   
+        <mapping class="entity.Artist"/>   
+        <mapping class="entity.Cart"/>   
+        <mapping class="entity.Artwork"/>   
+        <mapping class="entity.ArtworkStatus"/>   
+        <mapping class="entity.BettingEvents"/>   
+        <mapping class="entity.CoinPackage"/>   
+        <mapping class="entity.EventStatus"/>   
+        <mapping class="entity.PaymentMethod"/>   
+        <mapping class="entity.PaymentMethodType"/>   
+        <mapping class="entity.Transaction"/>   
+        <mapping class="entity.TransactionStatus"/>   
+        <mapping class="entity.TransactionType"/>   
+        <mapping class="entity.Medium"/>   
+
+    </session-factory>
+</hibernate-configuration>
+
